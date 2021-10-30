@@ -20,9 +20,17 @@ const db = mysql.createConnection(
     console.log('Connected to the election database.')
 );
 
-db.query(`SELECT * FROM candidates`, (err, rows) => {
+//GET a single candidate (READ)
+db.query(`SELECT * FROM candidates WHERE id=1`,(err,row) => {
+    if(err) {
+        console.log(err);
+    }
+    console.log(row);
+});
+
+/*db.query(`SELECT * FROM candidates`, (err, rows) => {
     console.log(rows);
-})
+})*/
 
 //Default response for any other request (Not Found) ***LAST ROUTE***
 app.use((req, res) => {
